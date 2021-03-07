@@ -1,0 +1,18 @@
+CREATE TABLE ToDo (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    content TEXT NOT NULL,
+    complete INTEGER as Boolean NOT NULL DEFAULT 0
+);
+
+selectAll:
+SELECT * FROM ToDo;
+
+insertToDo:
+INSERT INTO ToDo(content)
+VALUES (?);
+
+deleteById:
+DELETE FROM ToDo WHERE id = ?;
+
+updateComplete:
+UPDATE ToDo SET complete = ? WHERE id = ?;
