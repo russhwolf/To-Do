@@ -1,7 +1,7 @@
 CREATE TABLE ToDo (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     content TEXT NOT NULL,
-    complete INTEGER as Boolean NOT NULL DEFAULT 0
+    complete INTEGER AS Boolean NOT NULL DEFAULT 0
 );
 
 selectAll:

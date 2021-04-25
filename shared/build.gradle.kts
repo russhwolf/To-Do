@@ -6,9 +6,9 @@ plugins {
     id("com.squareup.sqldelight")
 }
 
-val coroutineVersion = "1.4.2-native-mt"
-val sqldelightVersion = "1.4.4"
-val turbineVersion = "0.4.0"
+val coroutineVersion = "1.4.3-native-mt"
+val sqldelightVersion = "1.5.0"
+val turbineVersion = "0.4.1"
 
 group = "com.example"
 version = "1.0-SNAPSHOT"
@@ -45,20 +45,17 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core") {
-                    version {
-                        strictly(coroutineVersion)
-                    }
-                }
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
 
                 implementation("com.squareup.sqldelight:coroutines-extensions:$sqldelightVersion")
-                implementation("app.cash.turbine:turbine:$turbineVersion")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+
+                implementation("app.cash.turbine:turbine:$turbineVersion")
             }
         }
         val androidMain by getting {
@@ -76,6 +73,12 @@ kotlin {
         }
         val iosMain by getting {
             dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion") {
+                    version {
+                        strictly(coroutineVersion)
+                    }
+                }
+
                 implementation("com.squareup.sqldelight:native-driver:$sqldelightVersion")
             }
         }
