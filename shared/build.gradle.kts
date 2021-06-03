@@ -6,9 +6,9 @@ plugins {
     id("com.squareup.sqldelight")
 }
 
-val coroutineVersion = "1.4.3-native-mt"
+val coroutineVersion = "1.5.0-native-mt"
 val sqldelightVersion = "1.5.0"
-val turbineVersion = "0.4.1"
+val turbineVersion = "0.5.1"
 
 group = "com.example"
 version = "1.0-SNAPSHOT"
