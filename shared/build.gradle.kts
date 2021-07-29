@@ -52,8 +52,7 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
 
                 implementation("app.cash.turbine:turbine:$turbineVersion")
             }
@@ -65,7 +64,6 @@ kotlin {
         }
         val androidTest by getting {
             dependencies {
-                implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
 
                 implementation("com.squareup.sqldelight:sqlite-driver:$sqldelightVersion")
@@ -87,11 +85,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(30)
+        minSdk = 21
     }
 }
 
