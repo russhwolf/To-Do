@@ -3,8 +3,8 @@ package com.russhwolf.todo.shared.test
 import co.touchlab.sqliter.DatabaseConfiguration
 import com.russhwolf.todo.shared.db.ToDoDatabase
 import app.cash.sqldelight.db.SqlDriver
-import app.cash.sqldelight.drivers.native.NativeSqliteDriver
-import app.cash.sqldelight.drivers.native.wrapConnection
+import app.cash.sqldelight.driver.native.NativeSqliteDriver
+import app.cash.sqldelight.driver.native.wrapConnection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 

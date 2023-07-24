@@ -3,11 +3,11 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
-    id("com.squareup.sqldelight")
+    id("app.cash.sqldelight")
 }
 
 val coroutineVersion = "1.6.4"
-val sqldelightVersion = "1.5.5"
+val sqldelightVersion = "2.0.0-rc02"
 val turbineVersion = "0.5.1"
 
 group = "com.example"
@@ -38,7 +38,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
-                implementation("com.squareup.sqldelight:coroutines-extensions:$sqldelightVersion")
+                implementation("app.cash.sqldelight:coroutines-extensions:$sqldelightVersion")
             }
         }
         val commonTest by getting {
@@ -50,14 +50,14 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("com.squareup.sqldelight:android-driver:$sqldelightVersion")
+                implementation("app.cash.sqldelight:android-driver:$sqldelightVersion")
             }
         }
         val androidTest by getting {
             dependencies {
                 implementation("junit:junit:4.13.2")
 
-                implementation("com.squareup.sqldelight:sqlite-driver:$sqldelightVersion")
+                implementation("app.cash.sqldelight:sqlite-driver:$sqldelightVersion")
             }
         }
         val iosMain by getting {
@@ -68,7 +68,7 @@ kotlin {
                     }
                 }
 
-                implementation("com.squareup.sqldelight:native-driver:$sqldelightVersion")
+                implementation("app.cash.sqldelight:native-driver:$sqldelightVersion")
             }
         }
         val iosTest by getting
@@ -84,9 +84,13 @@ android {
 }
 
 sqldelight {
-    database("ToDoDatabase") {
+    ToDoDatabase {
         packageName = "com.russhwolf.todo.shared.db"
+        dialect = "app.cash.sqldelight:mysql-dialect:2.0.0-alpha01"
     }
+//    database("ToDoDatabase") {
+//        packageName = "com.russhwolf.todo.shared.db"
+//    }
 }
 
 val packForXcode by tasks.creating(Sync::class) {
