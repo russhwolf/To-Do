@@ -6,8 +6,8 @@ plugins {
     id("com.squareup.sqldelight")
 }
 
-val coroutineVersion = "1.5.0-native-mt"
-val sqldelightVersion = "1.5.0"
+val coroutineVersion = "1.6.4"
+val sqldelightVersion = "1.5.5"
 val turbineVersion = "0.5.1"
 
 group = "com.example"
@@ -35,18 +35,9 @@ kotlin {
         }
     }
     sourceSets {
-        // experimental opt-ins only in tests for Turbine usage
-        matching {
-            it.name.endsWith("Test")
-        }.configureEach {
-            languageSettings.useExperimentalAnnotation("kotlin.time.ExperimentalTime")
-            languageSettings.useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
-        }
-
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
-
                 implementation("com.squareup.sqldelight:coroutines-extensions:$sqldelightVersion")
             }
         }

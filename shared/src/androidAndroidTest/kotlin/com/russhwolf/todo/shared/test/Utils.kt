@@ -1,8 +1,8 @@
 package com.russhwolf.todo.shared.test
 
 import com.russhwolf.todo.shared.db.ToDoDatabase
-import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
+import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 
