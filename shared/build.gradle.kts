@@ -84,13 +84,12 @@ android {
 }
 
 sqldelight {
-    ToDoDatabase {
-        packageName = "com.russhwolf.todo.shared.db"
-        dialect = "app.cash.sqldelight:mysql-dialect:2.0.0-alpha01"
+    databases {
+        create("ToDoDatabase") {
+            packageName.set("com.russhwolf.todo.shared.db")
+            dialect("app.cash.sqldelight:mysql-dialect:2.0.0-rc02")
+        }
     }
-//    database("ToDoDatabase") {
-//        packageName = "com.russhwolf.todo.shared.db"
-//    }
 }
 
 val packForXcode by tasks.creating(Sync::class) {
