@@ -1,6 +1,6 @@
 package com.russhwolf.todo.shared.test
 
-import com.squareup.sqldelight.db.SqlDriver
+import app.cash.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 
 expect fun createTestDbDriver(): SqlDriver

@@ -1,3 +1,5 @@
+import kotlin.Boolean;
+
 CREATE TABLE ToDo (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     content TEXT NOT NULL,

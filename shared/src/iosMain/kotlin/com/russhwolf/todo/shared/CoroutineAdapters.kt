@@ -13,9 +13,6 @@ class FlowAdapter<T : Any>(
     private val scope: CoroutineScope,
     private val flow: Flow<T>
 ) {
-    init {
-        freeze()
-    }
 
     fun subscribe(
         onEvent: (T) -> Unit,
@@ -23,8 +20,8 @@ class FlowAdapter<T : Any>(
         onComplete: () -> Unit
     ): Job =
         flow
-            .onEach { onEvent(it.freeze()) }
-            .catch { onError(it.freeze()) }
+            .onEach { onEvent(it) }
+            .catch { onError(it) }
             .onCompletion { onComplete() }
             .launchIn(scope)
 }

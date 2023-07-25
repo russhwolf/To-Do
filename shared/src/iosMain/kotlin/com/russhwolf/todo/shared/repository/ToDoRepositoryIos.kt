@@ -9,15 +9,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlin.native.concurrent.freeze
 
 class ToDoRepositoryIos(database: ToDoDatabase, dispatcher: CoroutineDispatcher = Dispatchers.Default) {
     private val repository = ToDoRepository(database, dispatcher)
     private val scope = CoroutineScope(SupervisorJob() + dispatcher)
-
-    init {
-        freeze()
-    }
 
     fun getList() = FlowAdapter(scope, repository.getList().map(::ToDos))
     fun add(content: String) = scope.launch { repository.add(content) }
@@ -27,7 +22,4 @@ class ToDoRepositoryIos(database: ToDoDatabase, dispatcher: CoroutineDispatcher 
 
 // This lets us do Flow<ToDos> instead of Flow<List<ToDo>> for better iOS generics experience
 data class ToDos(val items: List<ToDo>) {
-    init {
-        freeze()
-    }
 }

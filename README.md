@@ -53,3 +53,7 @@ in order to translate `FlowAdapter` to a `Published` value that SwiftUI can subs
 `ToDo` class to a Swift `ToDo` struct via utilities in [ToDo.swift](iosApp/ToDo/ToDo.swift). This better matches typical
 Swift development practices, and it means that the SwiftUI views have no direct dependence on the Kotlin code, which
 apparently helps the preview work better. 
+
+## Other Notes
+
+The project is using Gradle 8.x.x and requires Java 17, you will need to make sure your gradle jvm is set to 17.
