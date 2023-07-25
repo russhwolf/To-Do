@@ -6,9 +6,9 @@ plugins {
     id("app.cash.sqldelight")
 }
 
-val coroutineVersion = "1.6.4"
+val coroutineVersion = "1.7.1"
 val sqldelightVersion = "2.0.0-rc02"
-val turbineVersion = "0.5.1"
+val turbineVersion = "0.12.3"
 
 group = "com.example"
 version = "1.0-SNAPSHOT"
@@ -56,18 +56,11 @@ kotlin {
         val androidTest by getting {
             dependencies {
                 implementation("junit:junit:4.13.2")
-
                 implementation("app.cash.sqldelight:sqlite-driver:$sqldelightVersion")
             }
         }
         val iosMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion") {
-                    version {
-                        strictly(coroutineVersion)
-                    }
-                }
-
                 implementation("app.cash.sqldelight:native-driver:$sqldelightVersion")
             }
         }
@@ -76,10 +69,15 @@ kotlin {
 }
 
 android {
+    namespace = "com.russhwolf.todo.shared"
     compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 21
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
@@ -87,7 +85,6 @@ sqldelight {
     databases {
         create("ToDoDatabase") {
             packageName.set("com.russhwolf.todo.shared.db")
-            dialect("app.cash.sqldelight:mysql-dialect:2.0.0-rc02")
         }
     }
 }
