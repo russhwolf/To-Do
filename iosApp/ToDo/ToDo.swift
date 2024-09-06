@@ -18,7 +18,3 @@ extension ToDo {
         return Shared.ToDo(id: id, content: content, complete: complete)
     }
 }
-
-extension ToDo : Identifiable {
-    typealias ID = Int64
-}

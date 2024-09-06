@@ -3,19 +3,24 @@ import Shared
 
 @main
 struct ToDoApp : App {
-        
+    
+    let repository: ToDoRepository = DependenciesIosKt.createRepository()
+    
+    @State
+    var toDos: [ToDo] = []
+    
     var body: some Scene {
         WindowGroup {
-            let repository: ToDoRepositoryIos = DependenciesIosKt.createRespository()
-            let publisher = createPublisher(repository.getList())
-                .map { $0.items.map { $0.toStruct() } }
-                .eraseToAnyPublisher()
             ToDoList(
-                toDos: PublishedFlow(publisher, defaultValue: []),
-                onCreateItem: { repository.add(content: $0) },
-                onCheckedClick: { repository.toggleComplete(toDo: $0.toDataClass())},
-                onDeleteClick: { repository.remove(toDo: $0.toDataClass()) }
-            )
+                toDos: toDos,
+                onCreateItem: { content in Task { try await repository.add(content: content) } },
+                onCheckedClick: { toDo in Task { try await repository.toggleComplete(toDo: toDo.toDataClass() ) } },
+                onDeleteClick: { toDo in Task { try await repository.remove(toDo: toDo.toDataClass() ) } }
+            ).task {
+                for await toDos in repository.getList() {
+                    self.toDos = toDos.map { $0.toStruct() }
+                }
+            }
         }
     }
 }

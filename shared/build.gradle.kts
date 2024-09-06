@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -66,5 +67,14 @@ sqldelight {
         create("ToDoDatabase") {
             packageName.set("com.russhwolf.todo.shared.db")
         }
+    }
+}
+
+skie {
+    analytics {
+        // Disabled so people who clone don't accidentally send analytics without knowing
+        // TODO Remove this line to support SKIE development by sending usage analytics
+        // See https://skie.touchlab.co/Analytics for more details
+        enabled = false
     }
 }

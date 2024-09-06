@@ -2,8 +2,7 @@ import SwiftUI
 import Combine
 
 struct ToDoList : View {
-    @ObservedObject
-    var toDos: PublishedFlow<[ToDo]>
+    var toDos: [ToDo] // TODO can we make this not know about SKIE?
 
     let onCreateItem: (String) -> Void
     let onCheckedClick: (ToDo) -> Void
@@ -14,7 +13,7 @@ struct ToDoList : View {
             ToDoInput(onCreateItem: onCreateItem)
             ScrollView {
                 LazyVStack {
-                    ForEach(toDos.output) { toDo in
+                    ForEach(toDos, id: \.id) { toDo in
                         ToDoItem(
                             content: toDo.content,
                             checked: toDo.complete,
@@ -81,28 +80,25 @@ struct ToDoItem : View {
 struct ToDoList_Previews: PreviewProvider {
 
     static var previews: some View {
-        let publisher = PassthroughSubject<[ToDo], Never>()
-        let toDos = PublishedFlow(publisher.eraseToAnyPublisher(), defaultValue: [])
-
-        publisher.send([
+        var toDos = [
             ToDo(id: 0, content: "Make a list", complete: true),
             ToDo(id: 1, content: "Check it twice", complete: false)
-        ])
+        ]
         
         return Group {
             ToDoList(
                 toDos: toDos,
                 onCreateItem: { input in
-                    toDos.output.append(ToDo(id: (toDos.output.last?.id ?? -1) + 1, content: input, complete: false))
+                    toDos.append(ToDo(id: (toDos.last?.id ?? -1) + 1, content: input, complete: false))
                 },
                 onCheckedClick: { toDo in
-                    if let updatedIndex = toDos.output.firstIndex(where: { $0.id == toDo.id }) {
-                        toDos.output[updatedIndex] = ToDo(id: toDo.id, content: toDo.content, complete: !toDo.complete)
+                    if let updatedIndex = toDos.firstIndex(where: { $0.id == toDo.id }) {
+                        toDos[updatedIndex] = ToDo(id: toDo.id, content: toDo.content, complete: !toDo.complete)
                     }
                 },
                 onDeleteClick: { toDo in
-                    if let removedIndex = toDos.output.firstIndex(where: { $0.id == toDo.id }) {
-                        toDos.output.remove(at: removedIndex)
+                    if let removedIndex = toDos.firstIndex(where: { $0.id == toDo.id }) {
+                        toDos.remove(at: removedIndex)
                     }
                 }
             )

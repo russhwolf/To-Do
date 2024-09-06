@@ -11,6 +11,7 @@ kotlinx-coroutines = "1.8.1"
 androidx-activity = "1.9.2"
 androidx-compose = "1.7.0"
 
+skie = "0.9.0-RC.3"
 sqlDelight = "2.0.2"
 turbine = "1.1.0"
 
@@ -46,4 +47,5 @@ android-application = { id = "com.android.application", version.ref = "android-g
 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
+skie = { id = "co.touchlab.skie", version.ref = "skie" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
