@@ -171,7 +171,7 @@
 				7555FF93242A565B00829871 /* PBXTargetDependency */,
 			);
 			name = ToDoTests;
-			productName = iosAppTests;
+			productName = ToDoTests;
 			productReference = 7555FF91242A565B00829871 /* ToDoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -189,7 +189,7 @@
 				7555FF9E242A565B00829871 /* PBXTargetDependency */,
 			);
 			name = ToDoUITests;
-			productName = iosAppUITests;
+			productName = ToDoUITests;
 			productReference = 7555FF9C242A565B00829871 /* ToDoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -503,14 +503,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = iosAppTests/Info.plist;
+				INFOPLIST_FILE = ToDoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.ToDoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -524,14 +524,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = iosAppTests/Info.plist;
+				INFOPLIST_FILE = ToDoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.ToDoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -544,13 +544,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = iosAppUITests/Info.plist;
+				INFOPLIST_FILE = ToDoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosAppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.ToDoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -563,13 +563,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = iosAppUITests/Info.plist;
+				INFOPLIST_FILE = ToDoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosAppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.ToDoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
