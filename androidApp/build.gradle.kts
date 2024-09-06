@@ -1,36 +1,34 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.compiler)
 }
-
-val composeVersion = "1.2.1"
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.tooling)
 
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation(libs.androidx.compose.foundation)
 
-    implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.material:material-icons-core:$composeVersion")
-    implementation("androidx.compose.material:material-icons-extended:$composeVersion")
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.materialIcons)
+    implementation(libs.androidx.compose.materialIconsExtended)
 
-    implementation("androidx.activity:activity-compose:1.3.0")
+    implementation(libs.androidx.activityCompose)
 
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
+    androidTestImplementation(libs.androidx.compose.test)
 
 }
 
 android {
-    compileSdk = 33
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     namespace = "com.russhwolf.todo.androidApp"
     defaultConfig {
         applicationId = "com.russhwolf.todo.androidApp"
-        minSdk = 21
-        targetSdk = 33
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -51,9 +49,5 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.8"
     }
 }

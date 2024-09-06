@@ -392,3 +392,6 @@ DerivedData/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+###
+.kotlin
+

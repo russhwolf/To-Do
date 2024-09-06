@@ -1,29 +1,10 @@
 package com.russhwolf.todo.shared.test
 
-import co.touchlab.sqliter.DatabaseConfiguration
-import com.russhwolf.todo.shared.db.ToDoDatabase
 import app.cash.sqldelight.db.SqlDriver
-import app.cash.sqldelight.driver.native.NativeSqliteDriver
-import app.cash.sqldelight.driver.native.wrapConnection
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.runBlocking
-
+import app.cash.sqldelight.driver.native.inMemoryDriver
+import com.russhwolf.todo.shared.db.ToDoDatabase
 
 actual fun createTestDbDriver(): SqlDriver {
     val schema = ToDoDatabase.Schema
-    return NativeSqliteDriver(
-        DatabaseConfiguration(
-            name = "ToDoDatabaseTest.db",
-            version = schema.version,
-            create = { connection ->
-                wrapConnection(connection) { schema.create(it) }
-            },
-            upgrade = { connection, oldVersion, newVersion ->
-                wrapConnection(connection) { schema.migrate(it, oldVersion, newVersion) }
-            },
-            inMemory = true
-        )
-    )
+    return inMemoryDriver(schema)
 }
-
-actual fun suspendTest(block: suspend CoroutineScope.() -> Unit) = runBlocking(block = block)

@@ -1,13 +1,19 @@
+rootProject.name = "ToDo"
+
 pluginManagement {
     repositories {
         google()
         gradlePluginPortal()
         mavenCentral()
     }
-
 }
-rootProject.name = "ToDo"
 
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
 include(":androidApp")
 include(":shared")

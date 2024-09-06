@@ -1,5 +1,5 @@
 import Combine
-import shared
+import Shared
 
 // Thanks to Lamert Westerhoff who initially suggested the patterns behind createPublisher() and PublishedFlow to me
 

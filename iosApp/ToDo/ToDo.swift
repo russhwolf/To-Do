@@ -1,5 +1,5 @@
 import Foundation
-import shared
+import Shared
 
 struct ToDo {
     let id: Int64
@@ -7,15 +7,15 @@ struct ToDo {
     let complete: Bool
 }
 
-extension shared.ToDo {
+extension Shared.ToDo {
     func toStruct() -> ToDo {
         return ToDo(id: id, content: content, complete: complete)
     }
 }
 
 extension ToDo {
-    func toDataClass() -> shared.ToDo {
-        return shared.ToDo(id: id, content: content, complete: complete)
+    func toDataClass() -> Shared.ToDo {
+        return Shared.ToDo(id: id, content: content, complete: complete)
     }
 }
 

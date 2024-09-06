@@ -1,19 +1,16 @@
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("app.cash.sqldelight:gradle-plugin:2.0.0-rc02")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22")
-        classpath("com.android.tools.build:gradle:8.0.2")
-    }
+plugins {
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
+    tasks.withType<AbstractTestTask> {
+        testLogging {
+            showStandardStreams = true
+            events("passed", "failed")
+        }
     }
 }
