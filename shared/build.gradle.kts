@@ -3,12 +3,12 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
-    id("com.squareup.sqldelight")
+    id("app.cash.sqldelight")
 }
 
-val coroutineVersion = "1.5.0-native-mt"
-val sqldelightVersion = "1.5.0"
-val turbineVersion = "0.5.1"
+val coroutineVersion = "1.7.1"
+val sqldelightVersion = "2.0.0-rc02"
+val turbineVersion = "0.12.3"
 
 group = "com.example"
 version = "1.0-SNAPSHOT"
@@ -35,19 +35,10 @@ kotlin {
         }
     }
     sourceSets {
-        // experimental opt-ins only in tests for Turbine usage
-        matching {
-            it.name.endsWith("Test")
-        }.configureEach {
-            languageSettings.useExperimentalAnnotation("kotlin.time.ExperimentalTime")
-            languageSettings.useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
-        }
-
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
-
-                implementation("com.squareup.sqldelight:coroutines-extensions:$sqldelightVersion")
+                implementation("app.cash.sqldelight:coroutines-extensions:$sqldelightVersion")
             }
         }
         val commonTest by getting {
@@ -59,25 +50,18 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("com.squareup.sqldelight:android-driver:$sqldelightVersion")
+                implementation("app.cash.sqldelight:android-driver:$sqldelightVersion")
             }
         }
         val androidTest by getting {
             dependencies {
                 implementation("junit:junit:4.13.2")
-
-                implementation("com.squareup.sqldelight:sqlite-driver:$sqldelightVersion")
+                implementation("app.cash.sqldelight:sqlite-driver:$sqldelightVersion")
             }
         }
         val iosMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion") {
-                    version {
-                        strictly(coroutineVersion)
-                    }
-                }
-
-                implementation("com.squareup.sqldelight:native-driver:$sqldelightVersion")
+                implementation("app.cash.sqldelight:native-driver:$sqldelightVersion")
             }
         }
         val iosTest by getting
@@ -85,16 +69,23 @@ kotlin {
 }
 
 android {
+    namespace = "com.russhwolf.todo.shared"
     compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 21
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 sqldelight {
-    database("ToDoDatabase") {
-        packageName = "com.russhwolf.todo.shared.db"
+    databases {
+        create("ToDoDatabase") {
+            packageName.set("com.russhwolf.todo.shared.db")
+        }
     }
 }
 
