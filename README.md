@@ -30,7 +30,7 @@ activity [ToDoActivity](androidApp/src/main/java/com/russhwolf/todo/androidApp/T
 a `ToDoRepository` into composable views defined
 in [ToDoComposables.kt](androidApp/src/main/java/com/russhwolf/todo/androidApp/ToDoComposables.kt). There is a fully
 interactable preview function `ToDoListPreview()` which exercises the UI without any dependence on the shared code by
-manually wiring in-memory state
+manually wiring in-memory state.
 
 ## iOS code
 
@@ -39,7 +39,7 @@ renders it via SwiftUI views defined in [ToDoViews.swift](iosApp/ToDo/ToDoViews.
 preview view defined in `ToDoList_Previews` which exercises the UI without any dependence on the shared code by manually
 wiring in-memory state.
 
-The Swift code converts the Kotlin`ToDo` class to a Swift `ToDo` struct via utilities
+The Swift code converts the Kotlin `ToDo` class to a Swift `ToDo` struct via utilities
 in [ToDo.swift](iosApp/ToDo/ToDo.swift). This better matches typical Swift development practices, and it means that the
 SwiftUI views have no direct dependence on the Kotlin code, which apparently helps the preview work better.
 
