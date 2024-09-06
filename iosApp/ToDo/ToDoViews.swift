@@ -78,14 +78,15 @@ struct ToDoItem : View {
 }
 
 struct ToDoList_Previews: PreviewProvider {
-
-    static var previews: some View {
+    struct Preview : View {
+        
+        @State
         var toDos = [
             ToDo(id: 0, content: "Make a list", complete: true),
             ToDo(id: 1, content: "Check it twice", complete: false)
         ]
         
-        return Group {
+        var body: some View {
             ToDoList(
                 toDos: toDos,
                 onCreateItem: { input in
@@ -102,6 +103,12 @@ struct ToDoList_Previews: PreviewProvider {
                     }
                 }
             )
+        }
+    }
+    
+    static var previews: some View {
+        return Group {
+            Preview()
         }
     }
 }
