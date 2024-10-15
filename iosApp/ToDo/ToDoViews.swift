@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 struct ToDoList : View {
-    var toDos: [ToDo] // TODO can we make this not know about SKIE?
+    var toDos: [ToDo]
 
     let onCreateItem: (String) -> Void
     let onCheckedClick: (ToDo) -> Void
