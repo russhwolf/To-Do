@@ -71,6 +71,9 @@ sqldelight {
 }
 
 skie {
+    features {
+        enableSwiftUIObservingPreview = true
+    }
     analytics {
         // Disabled so people who clone don't accidentally send analytics without knowing
         // TODO Remove this line to support SKIE development by sending usage analytics
