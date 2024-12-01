@@ -1,19 +1,19 @@
 [versions]
-kotlin = "2.0.21"
+kotlin = "2.1.0"
 
-android-gradle = "8.5.2"
+android-gradle = "8.7.2"
 android-minSdk = "23"
-android-compileSdk = "34"
-android-targetSdk = "34"
+android-compileSdk = "35"
+android-targetSdk = "35"
 
 kotlinx-coroutines = "1.9.0"
 
-androidx-activity = "1.9.2"
-androidx-compose = "1.7.3"
+androidx-activity = "1.9.3"
+androidx-compose = "1.7.5"
 
-skie = "0.9.3"
+skie = "0.9.5"
 sqlDelight = "2.0.2"
-turbine = "1.1.0"
+turbine = "1.2.0"
 
 [libraries]
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
