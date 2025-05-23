@@ -6,9 +6,6 @@ struct ToDoApp : App {
     
     let repository: ToDoRepository = DependenciesIosKt.createRepository()
     
-    @State
-    var toDos: [ToDo] = []
-    
     var body: some Scene {
         WindowGroup {
             Observing(repository.getList(), initialContent: { ProgressView() }) { toDos in
