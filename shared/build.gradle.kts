@@ -1,12 +1,29 @@
+import com.android.build.api.dsl.androidLibrary
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.sqlDelight)
     alias(libs.plugins.skie)
 }
 
 kotlin {
-    androidTarget()
+    androidLibrary {
+        namespace = "com.russhwolf.todo.shared"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+
+        withHostTest {
+        }
+
+        compilations.configureEach {
+            compilerOptions.configure {
+                jvmTarget = JvmTarget.JVM_17
+            }
+        }
+    }
+
     listOf(
         iosArm64(),
         iosSimulatorArm64(),
@@ -37,7 +54,7 @@ kotlin {
                 implementation(libs.sqlDelight.android)
             }
         }
-        val androidUnitTest by getting {
+        val androidHostTest by getting {
             dependencies {
                 implementation(libs.sqlDelight.jvm)
             }
@@ -47,18 +64,6 @@ kotlin {
                 implementation(libs.sqlDelight.native)
             }
         }
-    }
-}
-
-android {
-    namespace = "com.russhwolf.todo.shared"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 

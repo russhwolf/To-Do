@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.1.20"
 
-android-gradle = "8.7.3"
+android-gradle = "8.9.3"
 android-minSdk = "23"
 android-compileSdk = "35"
 android-targetSdk = "35"
@@ -42,7 +42,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
-android-library = { id = "com.android.library", version.ref = "android-gradle" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle" }
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
