@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.3.10"
+kotlin = "2.4.0-dev-7635"
 
 android-gradle = "8.12.3"
 android-minSdk = "23"
@@ -12,7 +12,6 @@ androidx-activity = "1.13.0"
 androidx-compose = "1.10.5"
 androidx-compose-materialIcons = "1.7.8"
 
-skie = "0.10.10"
 sqlDelight = "2.3.2"
 turbine = "1.2.1"
 
@@ -48,5 +47,4 @@ android-application = { id = "com.android.application", version.ref = "android-g
 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
-skie = { id = "co.touchlab.skie", version.ref = "skie" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }

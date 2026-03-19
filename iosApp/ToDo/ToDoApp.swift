@@ -4,7 +4,7 @@ import Shared
 @main
 struct ToDoApp : App {
 
-    let repository: ToDoRepository = DependenciesIosKt.createToDoRepository()
+    let repository: Shared.repository.ToDoRepository = createToDoRepository()
 
     @State
     var toDos: [ToDo] = []
@@ -31,7 +31,7 @@ struct ToDoApp : App {
             )
             .onAppear {
                 Task {
-                    for try await toDos in repository.getList() {
+                    for try await toDos in repository.getList().asAsyncSequence() {
                         self.toDos = toDos.map {
                             $0.toStruct()
                         }
