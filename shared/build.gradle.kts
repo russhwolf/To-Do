@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.sqlDelight)
-    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -24,15 +23,9 @@ kotlin {
         }
     }
 
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64(),
-        iosX64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "Shared"
-        }
-    }
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
 
     sourceSets {
         commonMain {
@@ -65,6 +58,15 @@ kotlin {
             }
         }
     }
+
+    swiftExport {
+        moduleName = "Shared"
+        flattenPackage = "com.russhwolf.todo.shared"
+
+        configure {
+            freeCompilerArgs.add("-Xexpect-actual-classes")
+        }
+    }
 }
 
 sqldelight {
@@ -72,14 +74,5 @@ sqldelight {
         create("ToDoDatabase") {
             packageName.set("com.russhwolf.todo.shared.db")
         }
-    }
-}
-
-skie {
-    analytics {
-        // Disabled so people who clone don't accidentally send analytics without knowing
-        // TODO Remove this line to support SKIE development by sending usage analytics
-        // See https://skie.touchlab.co/Analytics for more details
-        enabled = false
     }
 }

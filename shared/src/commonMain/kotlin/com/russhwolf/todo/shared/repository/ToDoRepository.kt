@@ -9,21 +9,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
-class ToDoRepository(
+class ToDoRepository internal constructor(
     private val database: ToDoDatabase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.Default
+    private val dispatcher: CoroutineDispatcher
 ) {
+    constructor(database: ToDoDatabase) : this(database, Dispatchers.Default)
+
     fun getList(): Flow<List<ToDo>> = database.toDoQueries.selectAll().asFlow().mapToList(dispatcher)
 
-    suspend fun add(content: String) = withContext(dispatcher) {
+    suspend fun add(content: String): Unit = withContext(dispatcher) {
         database.toDoQueries.insertToDo(content)
     }
 
-    suspend fun remove(toDo: ToDo) = withContext(dispatcher) {
+    suspend fun remove(toDo: ToDo): Unit = withContext(dispatcher) {
         database.toDoQueries.deleteById(toDo.id)
     }
 
-    suspend fun toggleComplete(toDo: ToDo) = withContext(dispatcher) {
+    suspend fun toggleComplete(toDo: ToDo): Unit = withContext(dispatcher) {
         database.toDoQueries.updateComplete(!toDo.complete, toDo.id)
     }
 }

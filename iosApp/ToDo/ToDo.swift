@@ -7,14 +7,14 @@ struct ToDo {
     let complete: Bool
 }
 
-extension Shared.ToDo {
+extension Shared.db.ToDo {
     func toStruct() -> ToDo {
         return ToDo(id: id, content: content, complete: complete)
     }
 }
 
 extension ToDo {
-    func toDataClass() -> Shared.ToDo {
-        return Shared.ToDo(id: id, content: content, complete: complete)
+    func toDataClass() -> Shared.db.ToDo {
+        return Shared.db.ToDo(id: id, content: content, complete: complete)
     }
 }
