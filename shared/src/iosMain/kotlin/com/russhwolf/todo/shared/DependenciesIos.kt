@@ -5,7 +5,7 @@ import com.russhwolf.todo.shared.db.ToDoDatabase
 import com.russhwolf.todo.shared.repository.ToDoRepository
 
 @Suppress("unused") // Called from Swift
-fun createRepository(): ToDoRepository {
+fun createToDoRepository(): ToDoRepository {
     val driver = NativeSqliteDriver(ToDoDatabase.Schema, "ToDoDatabase.db")
     val database = ToDoDatabase(driver)
     return ToDoRepository(database)

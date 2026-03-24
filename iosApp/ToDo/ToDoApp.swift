@@ -3,8 +3,8 @@ import Shared
 
 @main
 struct ToDoApp : App {
-    
-    let repository: ToDoRepository = DependenciesIosKt.createRepository()
+
+    let repository: ToDoRepository = DependenciesIosKt.createToDoRepository()
     
     var body: some Scene {
         WindowGroup {
