@@ -1,19 +1,20 @@
 [versions]
-kotlin = "2.1.20"
+kotlin = "2.3.10"
 
-android-gradle = "8.9.3"
+android-gradle = "8.12.3"
 android-minSdk = "23"
-android-compileSdk = "35"
-android-targetSdk = "35"
+android-compileSdk = "36"
+android-targetSdk = "36"
 
-kotlinx-coroutines = "1.10.1"
+kotlinx-coroutines = "1.10.2"
 
-androidx-activity = "1.10.1"
-androidx-compose = "1.7.8"
+androidx-activity = "1.13.0"
+androidx-compose = "1.10.5"
+androidx-compose-materialIcons = "1.7.8"
 
-skie = "0.10.2"
-sqlDelight = "2.0.2"
-turbine = "1.2.0"
+skie = "0.10.10"
+sqlDelight = "2.3.2"
+turbine = "1.2.1"
 
 [libraries]
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
@@ -22,8 +23,8 @@ androidx-activityCompose = { module = "androidx.activity:activity-compose", vers
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx-compose" }
 
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "androidx-compose" }
-androidx-compose-materialIcons = { module = "androidx.compose.material:material-icons-core", version.ref = "androidx-compose" }
-androidx-compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "androidx-compose" }
+androidx-compose-materialIcons = { module = "androidx.compose.material:material-icons-core", version.ref = "androidx-compose-materialIcons" }
+androidx-compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "androidx-compose-materialIcons" }
 androidx-compose-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-compose" }
 androidx-compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androidx-compose" }
