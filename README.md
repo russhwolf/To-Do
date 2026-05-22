@@ -16,8 +16,9 @@ The core logic in the `shared` module is implemented via SqlDelight
 in [ToDo.sq](shared/src/commonMain/sqldelight/com/russhwolf/todo/shared/db/ToDo.sq). This is exposed in a Kotlin API
 by [ToDoRepository](shared/src/commonMain/kotlin/com/russhwolf/todo/shared/repository/ToDoRepository.kt).
 
-The [SKIE plugin](https://skie.touchlab.co/intro) is used to convert the Kotlin to a Swift-friendly API for the iOS app.
-Some extra manual conversion is done to move from a Kotlin data class to a Swift struct.
+The [Swift Export](https://kotlinlang.org/docs/native-swift-export.html) feature is used to convert the Kotlin to a
+Swift-friendly API for the iOS app. Some extra manual conversion is done to move from a Kotlin data class to a Swift
+struct.
 
 Unit tests verify the happy path for both repository classes, making use of
 the [Turbine](https://github.com/cashapp/turbine) library for testing `Flow`s. Not a whole lot new there if you're used
@@ -45,4 +46,4 @@ SwiftUI views have no direct dependence on the Kotlin code, which apparently hel
 
 ## Other Notes
 
-The project is using Gradle 8.x.x and requires Java 17, you will need to make sure your gradle jvm is set to 17.
+The project is using Gradle 9.x.x and requires Java 17, you will need to make sure your gradle jvm is set to 17.
