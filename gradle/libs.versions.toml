@@ -1,5 +1,14 @@
 [versions]
-kotlin = "2.4.0-Beta2"
+#kotlin = "2.4.0-RC"
+
+# Working versions
+#kotlin = "2.4.20-dev-3418"
+#kotlin = "2.4.20-dev-3925"
+
+# Not working versions
+#kotlin = "2.4.20-dev-4100"
+#kotlin = "2.4.20-dev-4242"
+kotlin = "2.4.20-dev-4357"
 
 android-gradle = "9.0.1"
 android-minSdk = "23"
