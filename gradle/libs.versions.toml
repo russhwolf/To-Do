@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.4.0-Beta2"
+kotlin = "2.4.0-RC"
 
 android-gradle = "9.0.1"
 android-minSdk = "23"
