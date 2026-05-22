@@ -6,10 +6,10 @@ android-minSdk = "23"
 android-compileSdk = "36"
 android-targetSdk = "36"
 
-kotlinx-coroutines = "1.10.2"
+kotlinx-coroutines = "1.11.0"
 
 androidx-activity = "1.13.0"
-androidx-compose = "1.10.5"
+androidx-compose = "1.11.2"
 androidx-compose-materialIcons = "1.7.8"
 
 sqlDelight = "2.3.2"
