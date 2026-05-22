@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.4.0-Beta2"
 
-android-gradle = "8.12.3"
+android-gradle = "9.0.1"
 android-minSdk = "23"
 android-compileSdk = "36"
 android-targetSdk = "36"
